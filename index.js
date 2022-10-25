@@ -62,11 +62,18 @@ const LinkedList = () => {
   };
 
   const pop = () => {
-    let node = linkedListObj.head;
-    while (node.next) {
-      node = node.next;
+    let lastNode = linkedListObj.head;
+    let currentNode = linkedListObj.head;
+    // When the currentNode has next=null, return the lastNode.
+    if (lastNode === null || lastNode.next === null) {
+      linkedListObj.head = null;
+    } else {
+      while (currentNode.next !== null) {
+        lastNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      lastNode.next = null;
     }
-    return node;
   };
 
   let linkedListObj = {
