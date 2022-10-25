@@ -102,6 +102,19 @@ const LinkedList = () => {
     return 'Not Found';
   };
 
+  const nodeString = () => {
+    let string = '';
+    let node = linkedListObj.head;
+    while (node) {
+      string += `(${node.value}) -> `;
+      if (node.next === null) {
+        string += `(null)`;
+        return string;
+      }
+      node = node.next;
+    }
+  };
+
   let linkedListObj = {
     head,
     append,
@@ -113,6 +126,7 @@ const LinkedList = () => {
     pop,
     contains,
     find,
+    nodeString,
   };
 
   return linkedListObj;
@@ -123,4 +137,4 @@ test.append('a');
 test.append('b');
 test.prepend('z');
 test.append('c');
-console.log(test.head);
+console.log(test.nodeString());
