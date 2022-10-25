@@ -20,11 +20,12 @@ const LinkedList = () => {
   const prepend = (value) => {
     let newNode = Node(value);
     newNode.next = list[0];
-    list = [newNode];
-    console.log(list);
+    linkedListObj.list = [newNode];
   };
 
-  return { list, append, prepend };
+  let linkedListObj = { list, append, prepend };
+
+  return linkedListObj;
 };
 
 let test = LinkedList();
