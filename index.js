@@ -6,24 +6,58 @@ const Node = (value = null, next = null) => {
 };
 
 const LinkedList = () => {
-  let list = [];
+  let head = null;
 
   const append = (value) => {
     let newNode = Node(value);
-    if (list.length > 0) {
-      list[list.length - 1].next = newNode;
+    if (linkedListObj.head === null) {
+      linkedListObj.head = newNode;
     } else {
-      list.push(newNode);
+      linkedListObj.head.next = newNode;
     }
   };
 
   const prepend = (value) => {
     let newNode = Node(value);
-    newNode.next = list[0];
-    linkedListObj.list = [newNode];
+    newNode.next = linkedListObj.head;
+    linkedListObj.head = newNode;
   };
 
-  let linkedListObj = { list, append, prepend };
+  const size = () => {
+    let total = 0;
+    let node = linkedListObj.head;
+    while (node !== null) {
+      total += 1;
+      node = node.next;
+    }
+    return total;
+  };
+
+  const firstNode = () => {
+    return linkedListObj.head;
+  };
+
+  const lastNode = () => {
+    let last;
+    let node = linkedListObj.head;
+    while (node.next !== null) {
+      node = node.next;
+      last = node;
+    }
+    return last;
+  };
+
+  const at = (index) => {
+    let node = linkedListObj.head;
+    let i = 0;
+    while (i !== index) {
+      node = node.next;
+      i++;
+    }
+    return node;
+  };
+
+  let linkedListObj = { head, append, prepend, size, firstNode, lastNode, at };
 
   return linkedListObj;
 };
@@ -32,4 +66,4 @@ let test = LinkedList();
 test.append('a');
 test.append('b');
 test.prepend('z');
-console.log(test.list);
+console.log(test.at(2));
