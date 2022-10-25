@@ -89,6 +89,19 @@ const LinkedList = () => {
     }
   };
 
+  const find = (value) => {
+    let index = 0;
+    let node = linkedListObj.head;
+    while (node) {
+      if (node.value === value) {
+        return index;
+      }
+      index += 1;
+      node = node.next;
+    }
+    return 'Not Found';
+  };
+
   let linkedListObj = {
     head,
     append,
@@ -99,6 +112,7 @@ const LinkedList = () => {
     at,
     pop,
     contains,
+    find,
   };
 
   return linkedListObj;
