@@ -76,6 +76,19 @@ const LinkedList = () => {
     }
   };
 
+  const contains = (value) => {
+    let node = linkedListObj.head;
+    while (node) {
+      if (node.value === value) {
+        return true;
+      }
+      if (node.next === null) {
+        return false;
+      }
+      node = node.next;
+    }
+  };
+
   let linkedListObj = {
     head,
     append,
@@ -85,6 +98,7 @@ const LinkedList = () => {
     lastNode,
     at,
     pop,
+    contains,
   };
 
   return linkedListObj;
