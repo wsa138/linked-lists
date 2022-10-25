@@ -13,7 +13,11 @@ const LinkedList = () => {
     if (linkedListObj.head === null) {
       linkedListObj.head = newNode;
     } else {
-      linkedListObj.head.next = newNode;
+      let node = linkedListObj.head;
+      while (node.next !== null) {
+        node = node.next;
+      }
+      node.next = newNode;
     }
   };
 
@@ -57,7 +61,24 @@ const LinkedList = () => {
     return node;
   };
 
-  let linkedListObj = { head, append, prepend, size, firstNode, lastNode, at };
+  const pop = () => {
+    let node = linkedListObj.head;
+    while (node.next) {
+      node = node.next;
+    }
+    return node;
+  };
+
+  let linkedListObj = {
+    head,
+    append,
+    prepend,
+    size,
+    firstNode,
+    lastNode,
+    at,
+    pop,
+  };
 
   return linkedListObj;
 };
@@ -66,4 +87,5 @@ let test = LinkedList();
 test.append('a');
 test.append('b');
 test.prepend('z');
-console.log(test.at(2));
+test.append('c');
+console.log(test.head);
